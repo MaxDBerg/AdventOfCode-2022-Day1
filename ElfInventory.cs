@@ -14,7 +14,7 @@ namespace AdventOfCode_2022_Day1
         {
             uint totalCaloriesForOneElf;
             List<uint> oneElfCalories = new List<uint>();
-            foreach (string line in File.ReadLines(@"C:\Users\maxda\OneDrive\Skrivbord\ElvesCalories.txt"))
+            foreach (string line in File.ReadLines(@"")) //Change this to the Codepath for the ElvesCalories.txt file
             {
                 totalCaloriesForOneElf = 0;
                 if (line == "")
