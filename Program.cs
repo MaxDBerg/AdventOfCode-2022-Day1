@@ -7,11 +7,11 @@ namespace AdventOfCode_2022_Day1
     {
         static void Main(string[] args)
         {
-            ElfInventory.ConvertRawData();
+            ElfInventory.ConvertRawData(); // Converts the raw input data to a usable format
 
-            ElfInventory.PrintElfWithMostCalories();
+            ElfInventory.PrintElfWithMostCalories(); // Prints the Elf carrying the most calories
 
-            ElfInventory.PrintTopThreeElvesWithMostCalories();
+            ElfInventory.PrintTopThreeElvesWithMostCalories(); // Prints the Top Three Elves carrying the most calories
         }
     }
 }
