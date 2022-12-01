@@ -10,56 +10,62 @@ namespace AdventOfCode_2022_Day1
     {
         public static List<uint> _inventory = new List<uint>();
 
-        public static void ConvertRawData()
+        public static void ConvertRawData() // Converts the raw input data
         {
-            uint totalCaloriesForOneElf;
+            uint totalCaloriesForOneElf; // Stores the calories one elf is carrying
             List<uint> oneElfCalories = new List<uint>();
             foreach (string line in File.ReadLines(@"")) //Change this to the Codepath for the ElvesCalories.txt file
             {
-                totalCaloriesForOneElf = 0;
-                if (line == "")
+                totalCaloriesForOneElf = 0; // Sets the variable to 0 for the next Elf
+                if (line == "") // Checks if the line is blank
                 {
-                    foreach (uint item in oneElfCalories)
+                    foreach (uint item in oneElfCalories) // Loops through the List<>
                     {
-                        totalCaloriesForOneElf += item;
+                        totalCaloriesForOneElf += item; // Adds the calories of one item to an elf
                     }
-                    oneElfCalories.Clear();
-                    _inventory.Add(totalCaloriesForOneElf);
+                    oneElfCalories.Clear(); // Clears the List<> now that we dont need it
+                    _inventory.Add(totalCaloriesForOneElf); // Adds the total calories for that Elf to the _inventory List<>
                 }
-                else
+                else // if the line actually contains something we add it to the List<>
                 {
-                    oneElfCalories.Add(uint.Parse(line));
+                    oneElfCalories.Add(uint.Parse(line)); // Adding the line to the List<>
                 }
             }
         }
-
+        
+        
+        // Prints the calories the Top Elf is carrying
         public static void PrintElfWithMostCalories()
         {
             Console.WriteLine("The Elf carrying the most, carries {0} Calories", _inventory.Max());
         }
-
+        
+        
+        // Prints the calories the Top Three Elves are carrying
         public static void PrintTopThreeElvesWithMostCalories()
         {
             Console.WriteLine("The Top Three Elves are carrying {0} Calories", CheckTopThreeElves());
         }
-
+        
+        
+        // Checks how many calories the Top Three Elves are carrying
         public static uint CheckTopThreeElves()
         {
-            List<uint> topThreeElves = new List<uint>();
-            uint totalTopThreeElves = 0;
+            List<uint> topThreeElves = new List<uint>(); // The individual Ammounts
+            uint totalTopThreeElves = 0; // The Summed Amount
 
             for (int i = 0; i < 3; i++)
             {
-                topThreeElves.Add(_inventory.Max());
-                _inventory.Remove(_inventory.Max());
+                topThreeElves.Add(_inventory.Max()); // Adds the Top Elf to the topThreeElves List<>
+                _inventory.Remove(_inventory.Max()); // Removes the Top Elf from the _inventory List<>
             }
 
             foreach (uint item in topThreeElves)
             {
-                totalTopThreeElves += item;
+                totalTopThreeElves += item; // Adds one of the Top Three Elves to the total
             }
 
-            return totalTopThreeElves;
+            return totalTopThreeElves; // returns the Summed Amount
         }
     }
 }
